@@ -7,6 +7,7 @@ import workdays
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import re
+from cookielib import CookieJar
 
 # Path for spark source folder
 os.environ['SPARK_HOME'] = "/home/sparkCluster/work/spark-1.4.1-bin-hadoop2.4"
@@ -162,7 +163,9 @@ def scrape():
 
     URL = "http://www.moneycontrol.com/elite/section/technical-experts/2-9-"+str(pg_no)+".html"
     # Download the page data and create a BeautitulSoup object
-    Page = urllib2.urlopen(URL)
+    cj = CookieJar()
+    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+    Page = opener.open(URL)
     Text = Page.read()
     soup = bs4.BeautifulSoup(Text, "html.parser")
 
@@ -300,7 +303,9 @@ def scrape_brok():
     # Page
     URL = "http://www.moneycontrol.com/elite/section/-experts/2-25-"+str(pg_no)+".html"
     # Download the page data and create a BeautitulSoup object
-    Page = urllib2.urlopen(URL)
+    cj = CookieJar()
+    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+    Page = opener.open(URL)
     Text = Page.read()
     soup = bs4.BeautifulSoup(Text, "html.parser")
 

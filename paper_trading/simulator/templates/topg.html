@@ -1659,7 +1659,9 @@ legend {text-align:center}
      <div class="container mt-5">
       <div class="head-title">
 				<div class="left">
-					<h1>Top Gainers and Top Losers</h1>
+					<br>
+					<br>
+					<!-- <h1>Top Gainers and Top Losers</h1> -->
 					<ul class="breadcrumb">
 						<li>
 							<a href="#">Top Gainers and Top Losers</a>
@@ -1673,80 +1675,16 @@ legend {text-align:center}
   
 <h2 class="sub-header" style="color: green" align='center'>Top Gainers</h2>
     <div class="table-responsive" style="padding-top: 20px;">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Company</th>
-                    <th>Open Price</th>
-                    <th>Low Price</th>
-                    <th>High Price</th>
-                    <th>Closing Price</th>
-                    <th>Net Price</th>
-                    <th>Last Traded Price</th>
-                    <th>Traded Quantity</th>
-                    <th>Turnover in lakhs</th>
-                    <th>Dividend per Share</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                {% for row in gainers %}
-                    <tr>
-                        <td><a href=https://www.google.com/finance/getchart?q={{ row.symbol }} target="_blank">{{ row.symbol }}</a></td>
-                        <td>{{ row.openPrice }}</td>
-                        <td>{{ row.lowPrice }}</td>
-                        <td>{{ row.highPrice }}</td>
-                        <td>{{ row.previousPrice }}</td>
-                        <td>{{ row.netPrice }}</td>
-                        <td>{{ row.ltp }}</td>
-                        <td>{{ row.tradedQuantity }}</td>
-                        <td>{{ row.turnoverInLakhs }}</td>
-                        <td>{{ row.lastCorpAnnouncement }}</td>
-
-                    </tr>
-                {% endfor %}
-            </tbody>
-
-        </table>
+		{% block content %}
+		{{gainers | safe}}
+		{% endblock %}
     </div>
     <div style="padding-top: 40px;">
           <h2 class="sub-header" style="color: red" align='center'>Top Losers</h2>
     <div class="table-responsive" style="padding-top: 20px;">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Company</th>
-                    <th>Open Price</th>
-                    <th>Low Price</th>
-                    <th>High Price</th>
-                    <th>Closing Price</th>
-                    <th>Net Price</th>
-                    <th>Last Traded Price</th>
-                    <th>Traded Quantity</th>
-                    <th>Turnover in lakhs</th>
-                    <th>Dividend per Share</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                {% for row in losers %}
-                    <tr>
-                        <td><a href=https://www.google.com/finance/getchart?q={{ row.symbol }} target="_blank">{{ row.symbol }}</a></td>
-                        <td>{{ row.openPrice }}</td>
-                        <td>{{ row.lowPrice }}</td>
-                        <td>{{ row.highPrice }}</td>
-                        <td>{{ row.previousPrice }}</td>
-                        <td>{{ row.netPrice }}</td>
-                        <td>{{ row.ltp }}</td>
-                        <td>{{ row.tradedQuantity }}</td>
-                        <td>{{ row.turnoverInLakhs }}</td>
-                        <td>{{ row.lastCorpAnnouncement }}</td>
-
-                    </tr>
-                {% endfor %}
-            </tbody>
-
-        </table>
+        
+		{{losers | safe}}
+		
     </div>
     </div>
      </main>

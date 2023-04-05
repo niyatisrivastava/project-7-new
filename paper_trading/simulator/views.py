@@ -300,6 +300,7 @@ def topg(request):
         'gainers': gainers,
         'losers': losers,
     }
+    # con = None
     return render(request, 'topg.html', con)
 
 
